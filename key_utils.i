@@ -27,7 +27,7 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 
 		memcpy(err, "ERROR", 5);
 
-		errorCode = signMessageWithPem(pem, message, &ret);
+		errorCode = signMessageWithPem(message, pem, &ret);
 		char *signature = ret;
 
 		if (errorCode == NOERROR) {
