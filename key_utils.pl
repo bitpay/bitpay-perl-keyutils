@@ -10,8 +10,8 @@ my $message = "Hello";
 
 $pem = key_utils::mygeneratePem();
 $pub = key_utils::mygetPublicKeyFromPem($pem);
-$signature = key_utils::mysignMessageWithPem($pem, $message);
-#$sin = key_utils::mygenerateSinFromPem($pem);
+$sin = key_utils::mygenerateSinFromPem($pem);
+#$signature = key_utils::mysignMessageWithPem($pem, $message);
 
 print "$pem\nPublic Key: $pub\nSin: $sin\nSignature: $signature\n";
 

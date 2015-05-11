@@ -41,7 +41,7 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 
 %inline %{
 	char *mygeneratePem() {
-		char *ret = malloc(240);
+		char *ret = malloc(224);
 		char *err = malloc(5);
 		int errorCode;
 

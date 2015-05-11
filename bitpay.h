@@ -25,18 +25,15 @@
 #define RIPEMD_AND_PADDING_STRING 23
 #define RIPEMD_HEX 40
 #define RIPEMD_HEX_STRING 41
+#define RIPEMD_AND_PADDING_HEX 44
 #define RIPEMD_AND_PADDING_HEX_STRING 45
 #define CHECKSUM 8
 #define CHECKSUM_STRING 9
-#define SIN 52
-#define SIN_STRING 53
+#define SIN 35 
+#define SIN_STRING 36 
 
 int generatePem(char **pem);
 int generateSinFromPem(char *pem, char **sin);
 int getPublicKeyFromPem(char *pemstring, char **pubkey);
 int signMessageWithPem(char *pem, char *message, char **signature); 
 
-static int createNewKey(EC_GROUP *group, EC_KEY *eckey);
-static int createDataWithHexString(char *inputString, uint8_t **result);
-static int base58encode(char *input, char *base58encode);
-static int digestOfBytes(uint8_t *message, char **output, char *type, int inLength);
