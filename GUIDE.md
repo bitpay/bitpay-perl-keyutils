@@ -7,7 +7,6 @@ This library provides utilities for use with the BitPay API. It enables creating
 
 Clone the github repository.
 
-run 
 ```bash
 ./build
 ```
