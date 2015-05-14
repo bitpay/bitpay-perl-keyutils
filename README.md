@@ -1,4 +1,5 @@
 # BitPay Key Utilities for Perl 
+[![Build Status](http://travis-ci.org/aleitner/bitpay-perl.svg?branch=travis)](https://travis-ci.org/aleitner/bitpay-perl)
 
 Provides required cryptographic functions to use the BitPay 2.0 API.
 
