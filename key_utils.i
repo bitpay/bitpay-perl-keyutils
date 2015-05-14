@@ -1,5 +1,5 @@
 /* key_utils.i */
-%module key_utils
+%module "BitPay::key_utils"
 %apply char *OUTPUT { char **pem }; 
 %{
 #include "bitpay.h"
