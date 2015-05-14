@@ -28,6 +28,6 @@ API Documentation is available on the [BitPay site](https://bitpay.com/api).
 ## Running the Tests
 
 ```bash
-$ perl test_key_utils.pl
+$ perl test.pl
 ```
 
