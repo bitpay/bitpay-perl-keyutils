@@ -1,4 +1,4 @@
-use key_utils;
+use BitPay::key_utils;
 use strict;
 use warnings;
 use Test::More;
@@ -14,23 +14,23 @@ test_get_public_key_from_pem();
 test_sign_message_with_pem();
 
 sub test_generate_pem {
-	my $pem = key_utils::mygeneratePem();
+	my $pem = BitPay::key_utils::mygeneratePem();
 	ok( $pem =~ m/BEGIN EC PRIVATE KEY.*\n.*\n.*\n.*\n.*END EC PRIVATE KEY/, 'TEST PEM GENERATION');
 }
 
 sub test_get_sin_from_pem {
-	my $sin = key_utils::mygenerateSinFromPem($const_pem);
+	my $sin = BitPay::key_utils::mygenerateSinFromPem($const_pem);
 	is( $sin, $const_sin, 'TEST SIN GENERATION');
 }
 
 sub test_get_public_key_from_pem {
-	my $pub = key_utils::mygetPublicKeyFromPem($const_pem);
+	my $pub = BitPay::key_utils::mygetPublicKeyFromPem($const_pem);
 	is( $pub, $const_pub, 'TEST PUBLIC KEY GENERATION');
 }
 
 sub test_sign_message_with_pem {
 	my $message = "We are the crystal gems";
-	my $signature = key_utils::mysignMessageWithPem($const_pem, $message);
+	my $signature = BitPay::key_utils::mysignMessageWithPem($const_pem, $message);
 	ok( $signature =~ m/^[a-f0-9]+$/, 'TEST SIGNATURE IS HEX');
 	ok( $signature =~ m/^304[4-6]022[0-1].*022[0-1]/, 'TEST SIGNATURE ENCODING SCHEME, BYTE LENGTH, & NEW SECTION LENGTHS');
 
