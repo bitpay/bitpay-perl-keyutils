@@ -11,7 +11,15 @@ This library provides utilities for use with the BitPay API. It enables creating
 ## Quick Start
 ### Installation
 
-Clone the github repository.
+Install from cpan by typing the following:
+
+```bash
+cpanm BitPay::key_utils
+```
+
+or
+
+Clone the github repository and type the following:
 
 ```bash
 perl Makefile.pl
