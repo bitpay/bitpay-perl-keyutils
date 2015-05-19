@@ -14,7 +14,7 @@ This library provides utilities for use with the BitPay API. It enables creating
 Install from cpan by typing the following:
 
 ```bash
-cpanm BitPay::key_utils
+sudo cpanm BitPay::key_utils
 ```
 
 or
@@ -22,7 +22,7 @@ or
 Clone the github repository and type the following:
 
 ```bash
-perl Makefile.pl
+perl Makefile.PL
 make
 make test
 sudo make install

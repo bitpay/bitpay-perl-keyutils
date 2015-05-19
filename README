@@ -12,11 +12,15 @@ DEPENDENCIES
 
 INSTALLATION
 
-Clone the github repository.
+Install from cpan by typing the following:
 
-To install this module type the following:
+sudo cpanm BitPay::key_utils
 
-	perl Makefile.pl
+or
+
+Clone the github repository and type the following:
+
+	perl Makefile.PL
 	make
 	make test
 	make install
