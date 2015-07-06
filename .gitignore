@@ -1,1 +1,7 @@
 .swp
+.editorconfig
+MYMETA.*
+pm_to_blib
+Makefile
+*.bs
+blib/*

@@ -1,16 +1,12 @@
 bitpay.h
-build
 CHANGES
-clean
 GUIDE.md
 key_utils.c
 key_utils.i
-key_utils.pm
+KeyUtils.pm
 key_utils_wrap.c
 LICENSE.md
 Makefile.PL
 README
-README.md
 test.pl
 MANIFEST
-.travis.yml

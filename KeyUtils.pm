@@ -4,17 +4,17 @@
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
 
-package BitPay::key_utils;
+package BitPay::KeyUtils;
 use base qw(Exporter);
 use base qw(DynaLoader);
-package BitPay::key_utilsc;
-bootstrap BitPay::key_utils;
-package BitPay::key_utils;
+package BitPay::KeyUtilsc;
+bootstrap BitPay::KeyUtils;
+package BitPay::KeyUtils;
 @EXPORT = qw();
 
 # ---------- BASE METHODS -------------
 
-package BitPay::key_utils;
+package BitPay::KeyUtils;
 
 sub TIEHASH {
     my ($classname,$obj) = @_;
@@ -47,19 +47,19 @@ sub this {
 
 # ------- FUNCTION WRAPPERS --------
 
-package BitPay::key_utils;
+package BitPay::KeyUtils;
 
-*generatePem = *BitPay::key_utilsc::generatePem;
-*generateSinFromPem = *BitPay::key_utilsc::generateSinFromPem;
-*getPublicKeyFromPem = *BitPay::key_utilsc::getPublicKeyFromPem;
-*signMessageWithPem = *BitPay::key_utilsc::signMessageWithPem;
-*mysignMessageWithPem = *BitPay::key_utilsc::mysignMessageWithPem;
-*mygeneratePem = *BitPay::key_utilsc::mygeneratePem;
-*mygenerateSinFromPem = *BitPay::key_utilsc::mygenerateSinFromPem;
-*mygetPublicKeyFromPem = *BitPay::key_utilsc::mygetPublicKeyFromPem;
+*generatePem = *BitPay::KeyUtilsc::generatePem;
+*generateSinFromPem = *BitPay::KeyUtilsc::generateSinFromPem;
+*getPublicKeyFromPem = *BitPay::KeyUtilsc::getPublicKeyFromPem;
+*signMessageWithPem = *BitPay::KeyUtilsc::signMessageWithPem;
+*bpSignMessageWithPem = *BitPay::KeyUtilsc::bpSignMessageWithPem;
+*bpGeneratePem = *BitPay::KeyUtilsc::bpGeneratePem;
+*bpGenerateSinFromPem = *BitPay::KeyUtilsc::bpGenerateSinFromPem;
+*bpGetPublicKeyFromPem = *BitPay::KeyUtilsc::bpGetPublicKeyFromPem;
 
 # ------- VARIABLE STUBS --------
 
-package BitPay::key_utils;
+package BitPay::KeyUtils;
 
 1;

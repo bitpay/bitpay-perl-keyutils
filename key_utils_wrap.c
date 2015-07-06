@@ -1493,10 +1493,10 @@ static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 
 /* -------- TYPES TABLE (END) -------- */
 
-#define SWIG_init    boot_BitPay__key_utils
+#define SWIG_init    boot_BitPay__KeyUtils
 
-#define SWIG_name   "BitPay::key_utilsc::boot_BitPay__key_utils"
-#define SWIG_prefix "BitPay::key_utilsc::"
+#define SWIG_name   "BitPay::KeyUtilsc::boot_BitPay__KeyUtils"
+#define SWIG_prefix "BitPay::KeyUtilsc::"
 
 #define SWIGVERSION 0x030005 
 #define SWIG_VERSION SWIGVERSION
@@ -1622,7 +1622,7 @@ SWIG_AsCharPtrAndSize(SV *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-	char *mysignMessageWithPem(char *pem, char *message) {
+	char *bpSignMessageWithPem(char *pem, char *message) {
 		char *ret = malloc(145);
 		char *err = malloc(5);
 		int errorCode;
@@ -1648,7 +1648,7 @@ SWIG_FromCharPtr(const char *cptr)
 }
 
 
-	char *mygeneratePem() {
+	char *bpGeneratePem() {
 		char *ret = malloc(240);
 		char *err = malloc(5);
 		int errorCode;
@@ -1667,7 +1667,7 @@ SWIG_FromCharPtr(const char *cptr)
 	}
 
 
-	char *mygenerateSinFromPem(char *pem) {
+	char *bpGenerateSinFromPem(char *pem) {
 		char *ret = malloc(sizeof(char)*36);
 		char *err = malloc(5);
 		int errorCode;
@@ -1687,7 +1687,7 @@ SWIG_FromCharPtr(const char *cptr)
 	}
 
 
-	char *mygetPublicKeyFromPem(char *pem) {
+	char *bpGetPublicKeyFromPem(char *pem) {
 		char *ret = malloc(67);
 		char *err = malloc(5);
 		int errorCode;
@@ -1710,8 +1710,8 @@ extern "C" {
 #endif
 
 #ifdef PERL_OBJECT
-#define MAGIC_CLASS _wrap_BitPay__key_utils_var::
-class _wrap_BitPay__key_utils_var : public CPerlObj {
+#define MAGIC_CLASS _wrap_BitPay__KeyUtils_var::
+class _wrap_BitPay__KeyUtils_var : public CPerlObj {
 public:
 #else
 #define MAGIC_CLASS
@@ -1892,7 +1892,7 @@ XS(_wrap_signMessageWithPem) {
 }
 
 
-XS(_wrap_mysignMessageWithPem) {
+XS(_wrap_bpSignMessageWithPem) {
   {
     char *arg1 = (char *) 0 ;
     char *arg2 = (char *) 0 ;
@@ -1907,19 +1907,19 @@ XS(_wrap_mysignMessageWithPem) {
     dXSARGS;
     
     if ((items < 2) || (items > 2)) {
-      SWIG_croak("Usage: mysignMessageWithPem(pem,message);");
+      SWIG_croak("Usage: bpSignMessageWithPem(pem,message);");
     }
     res1 = SWIG_AsCharPtrAndSize(ST(0), &buf1, NULL, &alloc1);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "mysignMessageWithPem" "', argument " "1"" of type '" "char *""'");
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "bpSignMessageWithPem" "', argument " "1"" of type '" "char *""'");
     }
     arg1 = (char *)(buf1);
     res2 = SWIG_AsCharPtrAndSize(ST(1), &buf2, NULL, &alloc2);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "mysignMessageWithPem" "', argument " "2"" of type '" "char *""'");
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "bpSignMessageWithPem" "', argument " "2"" of type '" "char *""'");
     }
     arg2 = (char *)(buf2);
-    result = (char *)mysignMessageWithPem(arg1,arg2);
+    result = (char *)bpSignMessageWithPem(arg1,arg2);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
     if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -1933,16 +1933,16 @@ XS(_wrap_mysignMessageWithPem) {
 }
 
 
-XS(_wrap_mygeneratePem) {
+XS(_wrap_bpGeneratePem) {
   {
     int argvi = 0;
     char *result = 0 ;
     dXSARGS;
     
     if ((items < 0) || (items > 0)) {
-      SWIG_croak("Usage: mygeneratePem();");
+      SWIG_croak("Usage: bpGeneratePem();");
     }
-    result = (char *)mygeneratePem();
+    result = (char *)bpGeneratePem();
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     free((char*)result);
     XSRETURN(argvi);
@@ -1952,7 +1952,7 @@ XS(_wrap_mygeneratePem) {
 }
 
 
-XS(_wrap_mygenerateSinFromPem) {
+XS(_wrap_bpGenerateSinFromPem) {
   {
     char *arg1 = (char *) 0 ;
     int res1 ;
@@ -1963,14 +1963,14 @@ XS(_wrap_mygenerateSinFromPem) {
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
-      SWIG_croak("Usage: mygenerateSinFromPem(pem);");
+      SWIG_croak("Usage: bpGenerateSinFromPem(pem);");
     }
     res1 = SWIG_AsCharPtrAndSize(ST(0), &buf1, NULL, &alloc1);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "mygenerateSinFromPem" "', argument " "1"" of type '" "char *""'");
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "bpGenerateSinFromPem" "', argument " "1"" of type '" "char *""'");
     }
     arg1 = (char *)(buf1);
-    result = (char *)mygenerateSinFromPem(arg1);
+    result = (char *)bpGenerateSinFromPem(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
     free((char*)result);
@@ -1982,7 +1982,7 @@ XS(_wrap_mygenerateSinFromPem) {
 }
 
 
-XS(_wrap_mygetPublicKeyFromPem) {
+XS(_wrap_bpGetPublicKeyFromPem) {
   {
     char *arg1 = (char *) 0 ;
     int res1 ;
@@ -1993,14 +1993,14 @@ XS(_wrap_mygetPublicKeyFromPem) {
     dXSARGS;
     
     if ((items < 1) || (items > 1)) {
-      SWIG_croak("Usage: mygetPublicKeyFromPem(pem);");
+      SWIG_croak("Usage: bpGetPublicKeyFromPem(pem);");
     }
     res1 = SWIG_AsCharPtrAndSize(ST(0), &buf1, NULL, &alloc1);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "mygetPublicKeyFromPem" "', argument " "1"" of type '" "char *""'");
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "bpGetPublicKeyFromPem" "', argument " "1"" of type '" "char *""'");
     }
     arg1 = (char *)(buf1);
-    result = (char *)mygetPublicKeyFromPem(arg1);
+    result = (char *)bpGetPublicKeyFromPem(arg1);
     ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
     if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
     free((char*)result);
@@ -2044,14 +2044,14 @@ static swig_variable_info swig_variables[] = {
 {0,0,0,0}
 };
 static swig_command_info swig_commands[] = {
-{"BitPay::key_utilsc::generatePem", _wrap_generatePem},
-{"BitPay::key_utilsc::generateSinFromPem", _wrap_generateSinFromPem},
-{"BitPay::key_utilsc::getPublicKeyFromPem", _wrap_getPublicKeyFromPem},
-{"BitPay::key_utilsc::signMessageWithPem", _wrap_signMessageWithPem},
-{"BitPay::key_utilsc::mysignMessageWithPem", _wrap_mysignMessageWithPem},
-{"BitPay::key_utilsc::mygeneratePem", _wrap_mygeneratePem},
-{"BitPay::key_utilsc::mygenerateSinFromPem", _wrap_mygenerateSinFromPem},
-{"BitPay::key_utilsc::mygetPublicKeyFromPem", _wrap_mygetPublicKeyFromPem},
+{"BitPay::KeyUtilsc::generatePem", _wrap_generatePem},
+{"BitPay::KeyUtilsc::generateSinFromPem", _wrap_generateSinFromPem},
+{"BitPay::KeyUtilsc::getPublicKeyFromPem", _wrap_getPublicKeyFromPem},
+{"BitPay::KeyUtilsc::signMessageWithPem", _wrap_signMessageWithPem},
+{"BitPay::KeyUtilsc::bpSignMessageWithPem", _wrap_bpSignMessageWithPem},
+{"BitPay::KeyUtilsc::bpGeneratePem", _wrap_bpGeneratePem},
+{"BitPay::KeyUtilsc::bpGenerateSinFromPem", _wrap_bpGenerateSinFromPem},
+{"BitPay::KeyUtilsc::bpGetPublicKeyFromPem", _wrap_bpGetPublicKeyFromPem},
 {0,0}
 };
 /* -----------------------------------------------------------------------------

@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -rf key_utils.o key_utils.pm key_utils.so key_utils_wrap.c key_utils_wrap.o pm_to_blib blib MYMETA.json MYMETA.yml key_utils.bs Makefile Makefile.am
+rm -rf key_utils.o KeyUtils.pm key_utils.so key_utils_wrap.c key_utils_wrap.o pm_to_blib blib MYMETA.json MYMETA.yml KeyUtils.bs Makefile Makefile.am

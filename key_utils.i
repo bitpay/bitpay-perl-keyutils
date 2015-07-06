@@ -1,5 +1,5 @@
 /* key_utils.i */
-%module "BitPay::key_utils"
+%module "BitPay::KeyUtils"
 %apply char *OUTPUT { char **pem }; 
 %{
 #include "bitpay.h"
@@ -14,13 +14,13 @@ extern int generateSinFromPem(char *pem, char **sin);
 extern int getPublicKeyFromPem(char *pemstring, char **pubkey);
 extern int signMessageWithPem(char *pem, char *message, char **signature); 
 
-%newobject mygeneratePem;
-%newobject mygenerateSinFromPem;
-%newobject mygetPublicKeyFromPem;
-%newobject mysignMessageWithPem;
+%newobject bpGeneratePem;
+%newobject bpGenerateSinFromPem;
+%newobject bpGetPublicKeyFromPem;
+%newobject bpSignMessageWithPem;
 
 %inline %{
-	char *mysignMessageWithPem(char *pem, char *message) {
+	char *bpSignMessageWithPem(char *pem, char *message) {
 		char *ret = malloc(145);
 		char *err = malloc(5);
 		int errorCode;
@@ -40,7 +40,7 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 %}
 
 %inline %{
-	char *mygeneratePem() {
+	char *bpGeneratePem() {
 		char *ret = malloc(240);
 		char *err = malloc(5);
 		int errorCode;
@@ -60,7 +60,7 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 %}
 
 %inline %{
-	char *mygenerateSinFromPem(char *pem) {
+	char *bpGenerateSinFromPem(char *pem) {
 		char *ret = malloc(sizeof(char)*36);
 		char *err = malloc(5);
 		int errorCode;
@@ -81,7 +81,7 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 %}
 
 %inline %{
-	char *mygetPublicKeyFromPem(char *pem) {
+	char *bpGetPublicKeyFromPem(char *pem) {
 		char *ret = malloc(67);
 		char *err = malloc(5);
 		int errorCode;
