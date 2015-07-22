@@ -3,4 +3,5 @@ perl:
   - "5.20"
   - "5.18"
 script:
+  - cpanm install Mozilla::CA LWP::UserAgent HTTP::Request LWP::Protocol::https JSON JSON::Parse IO::Socket::SSL
   - perl Makefile.PL && make test

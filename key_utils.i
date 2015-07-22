@@ -42,10 +42,8 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 %inline %{
 	char *bpGeneratePem() {
 		char *ret = malloc(240);
-		char *err = malloc(5);
+		char *err = "ERROR";
 		int errorCode;
-
-		memcpy(err, "ERROR", 5);
 
 		errorCode = generatePem(&ret);
 		char *pem = ret;
@@ -62,17 +60,13 @@ extern int signMessageWithPem(char *pem, char *message, char **signature);
 %inline %{
 	char *bpGenerateSinFromPem(char *pem) {
 		char *ret = malloc(sizeof(char)*36);
-		char *err = malloc(5);
+		char *err = "ERROR";
 		int errorCode;
-
-		memcpy(err, "ERROR", 5);
 
 		errorCode = generateSinFromPem(pem, &ret);
 
-		char *sin = ret;
-
 		if (errorCode == NOERROR) {
-			return sin;
+			return ret;
 		} else {
 			return err;
 		}

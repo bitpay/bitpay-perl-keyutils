@@ -1,4 +1,4 @@
-#include <string.h>
+
 #include "bitpay.h"
 
 static int createNewKey(EC_GROUP *group, EC_KEY *eckey);
@@ -8,43 +8,80 @@ static int digestOfBytes(uint8_t *message, char **output, char *type, int inLeng
 static int toHexString(char *input, int inLength, char **output);
 
 int generatePem(char **pem) {
-
-    char *pemholder = calloc(224, sizeof(char));
+    int returnError = NOERROR;
+    char * errorMessage = "";
+    char *pemholder = calloc(240, sizeof(char));
     EC_KEY *eckey = NULL;
+    BIO *out = NULL;
 
-    BIO *out = BIO_new(BIO_s_mem());
+    if ((out = BIO_new(BIO_s_mem())) == NULL) {
+        returnError = ERROR;
+        errorMessage = "Error in BIO_new(BIO_s_mem())";
+        goto clearVariables;
+    }
+    
     BUF_MEM *buf = NULL;
     EC_GROUP *group = NULL;
     
-    group = EC_GROUP_new_by_curve_name(NID_secp256k1);
-    buf = BUF_MEM_new();
-    eckey = EC_KEY_new();
+    if ((group = EC_GROUP_new_by_curve_name(NID_secp256k1)) == NULL) {
+        returnError = ERROR;
+        errorMessage = "Error in EC_GROUP_new_by_curve_name(NID_secp256k1))";
+        goto clearVariables;
+    }
 
-    createNewKey(group, eckey);
-    
-    EC_GROUP_free(group);
+    if (((eckey = EC_KEY_new()) == NULL) ||
+        ((buf = BUF_MEM_new()) == NULL)) {
+        returnError = ERROR;
+        errorMessage = "Error in EC_KEY_new())";
+        goto clearVariables;
+    };
 
-    PEM_write_bio_ECPrivateKey(out, eckey, NULL, NULL, 0, NULL, NULL);
+    if (createNewKey(group, eckey) == ERROR) {
+        returnError = ERROR;
+        errorMessage = "createNewKey(group, eckey)";
+        goto clearVariables;
+    }
+
+    if (PEM_write_bio_ECPrivateKey(out, eckey, NULL, NULL, 0, NULL, NULL) == 0) {
+        printf("PEM_write_bio_ECPrivateKey error");
+    }
 
     BIO_get_mem_ptr(out, &buf);
 
-    memcpy(pemholder, buf->data, 223);
-
-    if ( buf->data[219] == '\n') {
+    memcpy(pemholder, buf->data, 224);
+    if (buf->data[218] == '\n') {
+        pemholder[219] = '\0';
+        memcpy(*pem, pemholder, 220);
+    } else if ( buf->data[219] == '\n') {
         pemholder[220] = '\0';       
         memcpy(*pem, pemholder, 221);
     } else if ( buf->data[221] == '\n') {
         pemholder[222] = '\0';       
         memcpy(*pem, pemholder, 223);
-    } else {
+    } else if (buf->data[222] == '\n') {
         pemholder[223] = '\0';
         memcpy(*pem, pemholder, 224);
+    } else {
+        returnError = ERROR;
+        errorMessage = "invalid PEM generated";
+        goto clearVariables;
     }
 
-    EC_KEY_free(eckey);
-    BIO_free_all(out);
+    goto clearVariables;
 
-    return NOERROR;
+clearVariables:
+    if (group != NULL)
+        EC_GROUP_clear_free(group);
+    if (pemholder != NULL) 
+        free(pemholder);
+    if (eckey != NULL)
+        EC_KEY_free(eckey);
+    if (out != NULL)
+        BIO_free_all(out);
+    if (errorMessage[0] != '\0')
+        printf("Error: %s\n", errorMessage);
+
+    return returnError;
 };
 
 static int createNewKey(EC_GROUP *group, EC_KEY *eckey) {
@@ -54,11 +91,11 @@ static int createNewKey(EC_GROUP *group, EC_KEY *eckey) {
 
     EC_GROUP_set_asn1_flag(group, asn1Flag);
     EC_GROUP_set_point_conversion_form(group, form);
-    EC_KEY_set_group(eckey, group);
+    int setGroupError = EC_KEY_set_group(eckey, group);
 
     int resultFromKeyGen = EC_KEY_generate_key(eckey);
 
-    if (resultFromKeyGen != 1){
+    if (resultFromKeyGen != 1 || setGroupError != 1){
         return ERROR;
     }
 
@@ -294,7 +331,7 @@ static int digestOfBytes(uint8_t *message, char **output, char *type, int inLeng
     memcpy(*output, digest, strlen(digest));
     free(digest);
     /* Call this once before exit. */
-    EVP_cleanup();
+    //EVP_cleanup();
     return 0;
 }
 

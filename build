@@ -1,7 +1,13 @@
 #!/bin/bash
+wget https://github.com/bitpay/bitpay-c-keyutils/archive/v2.0.3.zip
+unzip v2.0.3.zip bitpay-c-keyutils-2.0.3/bitpay.h
+unzip v2.0.3.zip bitpay-c-keyutils-2.0.3/key_utils.c
+mv bitpay-c-keyutils-2.0.3/* . 
+rm -rf bitpay-c-keyutils-2.0.3
+rm v2.0.3.zip
 
 swig -perl5 key_utils.i
-gcc -c `perl -MConfig -e 'print join(" ", @Config{qw(ccflags optimize cccdlflags)}, "-I$Config{archlib}/CORE")'` -lssl -lcrypto key_utils.c key_utils_wrap.c
+gcc -c `perl -MConfig -e 'print join(" ", @Config{qw(ccflags optimize cccdlflags)}, "-I$Config{archlib}/CORE")'` -lssl -lcrypto key_utils.c key_utils_wrap.c -pthread -I/usr/local/Cellar/libressl/2.1.6/include/
 perl Makefile.PL
 make
 make test
