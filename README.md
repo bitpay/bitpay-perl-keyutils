@@ -1,7 +1,7 @@
 # BitPay Key Utilities for Perl
 [![MIT Licence](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/travis/bitpay/bitpay-perl-keyutils.svg?style=flat-square)](https://travis-ci.org/bitpay/bitpay-perl-keyutils)
-[![CPAN](https://img.shields.io/cpan/v/BitPay-key_utils.svg?style=flat-square)](http://search.cpan.org/dist/BitPay-key_utils/)
+[![CPAN](https://img.shields.io/cpan/v/Business-OnlinePayment-BitPay-KeyUtils-2.0.1.svg?style=flat-square)](https://metacpan.org/release/Business-OnlinePayment-BitPay-KeyUtils)
 
 Provides required cryptographic functions to use the BitPay 2.0 API.
 
