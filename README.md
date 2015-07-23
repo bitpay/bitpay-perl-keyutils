@@ -5,7 +5,7 @@
 
 Provides required cryptographic functions to use the BitPay 2.0 API.
 
-## [Getting Started &raquo;](http://dev.bitpay.com/guides/perl-key-utils.html)
+## [Getting Started &raquo;](https://github.com/bitpay/bitpay-perl-keyutils/blob/master/GUIDE.md)
 
 ## Found a bug?
 Let us know! Send a pull request or a patch. Questions? Ask! We're here to help. We will respond to all filed issues.
